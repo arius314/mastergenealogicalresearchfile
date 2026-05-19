@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Master Genealogy Research File</title>
+        <link rel="icon" href="data:,">
+        <style>
+            #ancestorGrid, #familyGrid {display: flex; gap: 12px; align-items: flex-start;}
+            #sectionC, #sectionD, #sectionE, #sectionF, #sectionG, #panelA, #panelB, #panelC {display: inline-block; vertical-align: top; height: 200px; overflow-y: auto;}
+            #searchResults div {margin: 4px 0;}
+            button {cursor: pointer; font-size: 0.8em; margin-left: 6px; padding: 2px 4px;}
+            button:hover {background-color: #EEF;}
+            .section {border: 1px solid black; padding: 10px; margin: 10px;}
+            .scroll-container {overflow-x: auto; white-space: nowrap;}
+            .column {width: 220px; flex-shrink: 0; overflow-wrap: anywhere; border: 1px solid #888888; padding: 10px; background-color: #F9F9F9; border-radius: 6px;}
+        </style>
+    </head>
+    <body>
+        <center><h2>MASTER GENEALOGICAL RESEARCH FILE</h2>
+        <h4>Listing documents, research notes, FAN club data, etc.</h4></center>
+        <div class="section"><!--SEARCH-->
+            <h3>Search</h3>
+            <input type="text" id="searchBox" placeholder="Search people, documents..." style="width: 60%;">
+            <button id="toggleNonBioBtn"></button>
+            <div id="searchResults"></div>
+        </div>
+        <div class="section"><!--SECTIONS A, B-->
+            <center><h3>PERSON/FAMILY SELECTION AND NAVIGATION</h3></center>
+            <div class="section" id="sectionA">
+                <h3>📈 Ancestors</h3>
+                <div id="navButtons"></div><!--Initiated with initState()-->
+                <div class="scroll-container">
+                    <div id="ancestorGrid"></div>
+                </div>
+            </div>
+            <div class="section" id="sectionB">
+                <h3>📉 Descendants</h3>
+                <div class="scroll-container">
+                    <div id="familyGrid">No ancestor selected</div>
+                </div>
+            </div>
+        </div>
+        <div class="section"><!--SECTIONS F, C-->
+            <center><h3>PERSONAL AND FAMILY DETAILS</h3></center>
+            <div class="section" id="sectionF" style="width: 47%">
+                <h3>👨 Person Details</h3>
+                <div>No person selected</div>
+            </div>
+            <div class="section" id="sectionC" style="width: 47%">
+                <h3>👫 Relationship/Family Group Details</h3>
+                <div id="familyDetails">No union selected</div>
+            </div>
+        </div>
+        <div class="section"><!--SECTIONS D, E-->
+            <center><h3>EVENT, EVIDENCE AND CONTEXT DETAILS</h3></center>
+            <div class="section" id="sectionG" style="width: 30%">
+                <h3>📆 Events</h3>
+                <div id="eventPanel">No event selected</div>
+            </div>
+            <div class="section" id="sectionD" style="width: 30%">
+                <h3>📜 Documents</h3>
+                <div id="documentPanel">No document selected</div>
+            </div>
+            <div class="section" id="sectionE" style="width: 30%">
+                <h3>🪭 FAN Club</h3>
+                <div id="fanPanel">No FAN entity selected</div>
+            </div>
+        </div>
+        <div class="section">
+            <center><h3>Navigation History</h3></center>
+            <div id="navHistory"></div>
+        </div>
+        <div class="section">
+            <center><h3>META-WORKFLOW DETAILS</h3></center>
+            <div class="section" id="panelA" style="width: 30%">
+                <h3>🧪 Debug: State</h3>
+                <pre id="debugPanel" style="font-size: 12px; background:#f4f4f4; padding:10px;"></pre>
+            </div>
+            <div class="section" id="panelB" style="width: 29.5%">
+                <h3>💯 Research Completeness</h3>
+            </div>
+            <div class="section" id="panelC" style="width: 30%">
+                <h3>🔎 Research Priorities</h3>
+            </div>
+        </div>
+        
+        <div id="loading">Loading data...</div>
+        <div id="tooltip" style="position: absolute; background: #9BD2DE; border: 1px solid black; padding: 5px; display: none; pointer-events: none;"></div>
+
+        <script type="module" src="src/main.js"></script>
+    </body>
+</html>
