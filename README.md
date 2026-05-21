@@ -45,7 +45,9 @@ Phase 1: Structural hardening 🗿
     - structured names
     - index layer hardening (includes auto-indexing caches so we no longer need to manually maintain person.unions and person.parent_child indices)
     - auto-normalization completion
-    - sntity lifecycle consistency
+    - entity lifecycle consistency
+- Simultaneous with these subphases:
+    - prepare archttectural context document
 
 Phase 2: Real data readiness 🏗 (Currently the data is still toy data, for testing, derived from Œdipus' story in Greek mythology.) To include:
 - Phase 2A - Editing/import/export infrastructure
