@@ -1,5 +1,26 @@
-export function getPerson(data, id) {
-    return data.persons.find(p => p.id === id);
+import {getRelationship} from "./relationships.js";
+export function getPerson(indices, id) {
+    return indices.personsById.get(id);
+}
+export function getParents(indices, state, person) {
+    if (!person.parent_child) return [];
+    return person.parent_child
+        .map(id => getRelationship(indices, id))
+        .filter(rel => rel && rel.parent)
+        .filter(rel => {
+            if (state.showNonBiological) {
+                return true;
+            }
+            return (
+                !rel.subtype ||
+                rel.subtype === "biological"
+            );
+        })
+        .map(rel => ({
+            id: rel.parent,
+            subtype: rel.subtype || "biological",
+            relationship: rel
+        }));
 }
 export function sortParents(parents) {
     const priority = {

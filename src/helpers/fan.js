@@ -1,3 +1,3 @@
-export function getFan(data, id) {
-    return data.fan_entities.find(f => f.id === id);
+export function getFan(indices, id) {
+    return indices.fanById.get(id);
 }
